@@ -1,0 +1,205 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header styling with white background */
+header {
+    font-size: 24px;
+    font-weight: bold;
+    padding: 20px;
+    background: #ffffff; /* Ensures white background */
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+    border-bottom: 1px solid #ddd;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    height: 60px;
+}
+
+.dashboard {
+    width: 80%;
+    margin: 10px auto 20px auto;
+    padding: 20px;
+    text-align: left;
+}
+
+/* Welcome Message */
+.welcomeMessage {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    padding-left: 10px;
+}
+
+/* Summary Boxes Styled as Cards */
+.summary {
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.summaryBox {
+    font-size: 20px;
+    background: #ddd;
+    padding: 20px;
+    width: 200px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: transform 0.2s ease;
+    cursor: pointer;
+}
+
+.summaryBox:hover {
+    transform: scale(1.05);
+    background-color: #f0f0f0;
+}
+
+.summaryBox span {
+    display: block;
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    margin-top: 10px;
+}
+
+/* Table Controls: Add Supplier Button and Information Icon */
+.table-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.addSupplierBtn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.addSupplierBtn:hover {
+    background: #0056b3;
+}
+
+/* Centering and styling the logo and info icon */
+.logoContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    position: relative;
+}
+
+.logo {
+    max-width: 200px;
+    height: auto;
+}
+
+.infoIcon {
+    font-size: 20px;
+    color: #007bff;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #ffffff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Information Box (Tooltip) */
+.infoBox {
+    display: none;
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    padding: 15px;
+    background: #f4f4f4;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    color: #333;
+    z-index: 10;
+}
+
+.infoBox p {
+    margin-top: 0;
+}
+
+.infoBox ul {
+    padding-left: 20px;
+    list-style-type: disc;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f4f4f4;
+    position: relative;
+    cursor: pointer;
+}
+
+th::after {
+    content: '⬍'; /* Sorting icon */
+    position: absolute;
+    right: 10px;
+    font-size: 12px;
+    color: #007bff;
+    opacity: 0.6;
+}
+
+td a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+td a:hover {
+    text-decoration: underline;
+}
+
+/* Reset Filter Button */
+.resetFilterBtn {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.resetFilterBtn:hover {
+    background-color: #0056b3;
+}

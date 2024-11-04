@@ -1,0 +1,172 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+}
+
+/* Header styling with white background */
+header {
+    font-size: 24px;
+    font-weight: bold;
+    padding: 2px 20px;
+    background: #ffffff;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+    border-bottom: 1px solid #ddd;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    height: 60px;
+}
+
+.logoContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.logo {
+    max-height: 51px;
+    width: auto;
+}
+
+.infoIcon {
+    font-size: 20px;
+    color: #007bff;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #ffffff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Information Tooltip */
+.infoBox {
+    display: none;
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    padding: 15px;
+    background: #f4f4f4;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    color: #333;
+    z-index: 10;
+}
+
+/* Profile container styling */
+.vendor-profile-container {
+    background-color: #f8f8f8;
+    padding: 20px;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 80px auto 20px auto;
+}
+
+/* Title styling */
+.vendor-profile-container h1 {
+    text-align: center;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Back button styling */
+.back-button {
+    display: block;
+    font-size: 1.5em;
+    color: #333;
+    text-decoration: none;
+    margin-bottom: 15px;
+    font-weight: bold;
+    padding: 5px;
+}
+
+/* Field styling */
+.field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.field label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.field input[type="text"],
+.field textarea {
+    width: 100%;
+    padding: 10px;
+    padding-right: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 1em;
+    background-color: white;
+    color: #333;
+}
+
+.field textarea {
+    resize: vertical;
+    height: 100px;
+}
+
+/* Button styling for "Add Risk Documents" */
+.add-risk-documents-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    font-size: 1em;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 20px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.add-risk-documents-btn:hover {
+    background-color: #0056b3;
+}
+
+.documents-list {
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.documents-list a {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 1em;
+}
+
+.documents-list a:hover {
+    text-decoration: underline;
+}
+

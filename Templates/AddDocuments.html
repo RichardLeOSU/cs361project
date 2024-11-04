@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Risk Documents</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/AddDocumentsStyle.css') }}">
+</head>
+<body>
+
+    <header>
+        <div class="logoContainer">
+            <img src="{{ url_for('static', filename='Images/VendorSafeLogo.png') }}" alt="VendorSafe Logo" class="logo">
+            <span onclick="ToggleInfo()" class="infoIcon">i</span>
+        </div>
+    </header>
+
+    <div class="form-container">
+        <a href="javascript:history.back()" class="backButton">←</a>
+        <h1 class="add-supplier-title">Add Risk Documents</h1>
+
+        <form id="uploadForm" action="{{ url_for('upload_document', supplier_id=supplier_id) }}" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="supplierId" value="{{ supplier_id }}"> <!-- Hidden supplier ID -->
+
+            <div class="upload-section">
+                <label for="fileUpload" class="upload-label">
+                    <img src="{{ url_for('static', filename='Images/UploadFiles.svg') }}" alt="Upload Icon" class="upload-icon">
+                </label>
+                <input type="file" id="fileUpload" name="fileUpload" multiple onchange="handleFileUpload()" style="display: none;">
+                <p>Click to upload files</p>
+            </div>
+
+            <p id="warningMessage" class="warning-message" style="display: none; color: red; font-weight: bold;"></p>
+
+            <table class="document-table">
+                <thead>
+                    <tr>
+                        <th>Document Name</th>
+                        <th>Document Type</th>
+                        <th>Upload Status</th>
+                    </tr>
+                </thead>
+                <tbody id="documentList"></tbody>
+            </table>
+
+            <button type="button" class="finalizeButton" onclick="finalizeUpload()">Finalize Upload</button>
+        </form>
+    </div>
+
+    <div id="popupOverlay" class="popup-overlay" style="display: none;">
+        <div class="popup-content">
+            <p id="popupMessage">Please wait while your documents are being uploaded...</p>
+            <div id="popupActions" class="popup-actions" style="display: none;">
+                <button onclick="closePopup()" class="finalizeButton">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="InfoBox" class="infoBox">
+        <p>Information about uploading risk documents.</p>
+        <ul>
+            <li>You can upload multiple documents related to risk assessments.</li>
+            <li>Supported formats include PDF, DOC, and DOCX.</li>
+            <li>Finalize your uploads to link them to the supplier profile.</li>
+        </ul>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/AddDocuments.js') }}"></script>
+</body>
+</html>

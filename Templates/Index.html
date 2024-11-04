@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VendorSafe Dashboard</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Style.css') }}">
+    <script src="{{ url_for('static', filename='js/Script.js') }}" defer></script>
+</head>
+<body>
+    <!-- Full-width Header with Logo and Information Icon -->
+    <header class="logoContainer">
+        <img src="{{ url_for('static', filename='Images/VendorSafeLogo.png') }}" alt="VendorSafe Logo" class="logo">
+        <span onclick="ToggleInfo()" class="infoIcon">i</span>
+    </header>
+
+    <div class="dashboard">
+        <!-- Information Tooltip with Explanations for Summary Cards and Table -->
+        <div id="InfoBox" class="infoBox">
+            <p><strong>Summary Cards:</strong></p>
+            <ul>
+                <li><strong>Suppliers</strong>: Shows the total number of suppliers in the system. Click to view all suppliers.</li>
+                <li><strong>Recently Added Suppliers</strong>: Displays the number of suppliers added in the last three months. Click to filter the table for recent suppliers.</li>
+                <li><strong>Missing Risk Documents</strong>: Shows the number of suppliers who haven't submitted required risk documents. Click to filter the table for these suppliers.</li>
+            </ul>
+            <p><strong>Suppliers Table:</strong></p>
+            <ul>
+                <li>This table lists all suppliers with their names, add dates, risk scores, and document statuses, which are all sortable by clicking on the column header.</li>
+                <li>Click on a supplier’s name to view their detailed profile.</li>
+                <li>Use the "Risk Documents" column to see if a supplier has submitted the required documents (✓ indicates documents are submitted).</li>
+            </ul>
+        </div>
+
+        <!-- Welcome Message -->
+        <h1 class="welcomeMessage">Welcome!</h1>
+
+        <!-- Summary Boxes -->
+        <div class="summary">
+            <div class="summaryBox" onclick="filterTable('all')" style="cursor: pointer;">Suppliers <br><span>{{ data['suppliers'] }}</span></div>
+            <div class="summaryBox" onclick="filterTable('recent')" style="cursor: pointer;">Recently Added Suppliers <br><span>{{ data['recentlyAdded'] }}</span></div>
+            <div class="summaryBox" onclick="filterTable('missing')" style="cursor: pointer;">Missing Risk Documents <br><span>{{ data['missingDocuments'] }}</span></div>
+        </div>
+
+        <!-- Add Supplier Button -->
+        <div class="table-controls">
+            <a href="{{ url_for('AddVendor') }}" class="addSupplierBtn">Add New Supplier</a>
+        </div>
+
+        <!-- Suppliers Table -->
+        <table id="supplierTable">
+            <thead>
+                <tr>
+                    <th onclick="sortTable(0)">Supplier <span class="sort-icon">↕</span></th>
+                    <th onclick="sortTable(1)">Add Date <span class="sort-icon">↕</span></th>
+                    <th onclick="sortTable(2)">Risk Score <span class="sort-icon">↕</span></th>
+                    <th onclick="sortTable(3)">Risk Documents <span class="sort-icon">↕</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for vendor in data['vendors'] %}
+                <tr data-add-date="{{ vendor.addDate }}" data-has-documents="{{ 'true' if vendor.hasRiskDocuments else 'false' }}">
+                    <td><a href="{{ url_for('VendorProfile', vendorId=vendor.vendorId) }}">{{ vendor.name }}</a></td>
+                    <td>{{ vendor.addDate }}</td>
+                    <td>{{ vendor.riskScore }}</td>
+                    <td>{% if vendor.hasRiskDocuments %}✓{% else %}✗{% endif %}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ vendor.name }} - Profile</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/VendorProfileStyle.css') }}">
+    <script src="{{ url_for('static', filename='js/Script.js') }}" defer></script>
+</head>
+<body>
+    <!-- Header with Logo and Information Icon -->
+    <header>
+        <div class="logoContainer">
+            <img src="{{ url_for('static', filename='Images/VendorSafeLogo.png') }}" alt="VendorSafe Logo" class="logo">
+            <span onclick="ToggleInfo()" class="infoIcon">i</span>
+        </div>
+    </header>
+
+    <!-- Information Tooltip Box -->
+    <div id="InfoBox" class="infoBox">
+        <p><strong>Vendor Profile:</strong></p>
+        <ul>
+            <li><strong>Company Address</strong>: The registered address of the vendor's office.</li>
+            <li><strong>Contact Information</strong>: Contact details of the vendor's representative.</li>
+            <li><strong>Risk Documents</strong>: List of uploaded documents associated with the vendor.</li>
+        </ul>
+    </div>
+
+    <!-- Main Content Container -->
+    <div class="vendor-profile-container">
+        <a href="{{ url_for('Dashboard') }}" class="back-button">&larr; Back</a>
+        <h1>{{ vendor.name }}</h1>
+
+        <div class="field">
+            <label>Company Address:</label>
+            <input type="text" value="{{ vendor.companyAddress }}" readonly>
+        </div>
+
+        <div class="field">
+            <label>Contact Name:</label>
+            <input type="text" value="{{ vendor.contactName }}" readonly>
+        </div>
+
+        <div class="field">
+            <label>Contact Email:</label>
+            <input type="text" value="{{ vendor.contactEmail }}" readonly>
+        </div>
+
+        <div class="field">
+            <label>Contact Phone:</label>
+            <input type="text" value="{{ vendor.contactPhone }}" readonly>
+        </div>
+
+        <div class="field">
+            <label>Cybersecurity Policy:</label>
+            <input type="text" value="{{ vendor.cybersecurityPolicy }}" readonly>
+        </div>
+
+        <div class="field">
+            <label>ISO Certified:</label>
+            <input type="text" value="{{ vendor.isoCertified }}" readonly>
+        </div>
+
+        <div class="field">
+            <label>Security Training:</label>
+            <input type="text" value="{{ vendor.securityTraining }}" readonly>
+        </div>
+
+        <div class="field">
+            <label>Incident Response Plan:</label>
+            <input type="text" value="{{ vendor.incidentResponse }}" readonly>
+        </div>
+
+        <div class="field">
+            <label>Data Access Level:</label>
+            <input type="text" value="{{ vendor.dataAccessLevel }}" readonly>
+        </div>
+
+        <div class="field">
+            <label>Compliance Audits:</label>
+            <input type="text" value="{{ vendor.complianceAudits }}" readonly>
+        </div>
+
+        <div class="field">
+            <label>Risk Documents:</label>
+            <div class="documents-list">
+                {% for document in documents %}
+                    <a href="{{ url_for('static', filename=document.filePath) }}" download="{{ document.fileName }}">
+                        {{ document.fileName }}
+                    </a><br>
+                {% endfor %}
+            </div>
+        </div>
+
+        <a href="{{ url_for('AddDocuments', supplier_id=vendor.vendorId) }}" class="add-risk-documents-btn">Add Risk Documents</a>
+    </div>
+</body>
+</html>

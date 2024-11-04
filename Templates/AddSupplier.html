@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Supplier</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/AddSupplierStyle.css') }}">
+</head>
+<body>
+
+    <!-- Full-width Header with Logo and Information Icon -->
+    <header>
+        <div class="logoContainer">
+            <img src="{{ url_for('static', filename='Images/VendorSafeLogo.png') }}" alt="VendorSafe Logo" class="logo">
+            <span onclick="ToggleInfo()" class="infoIcon">i</span>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="form-container">
+        <a href="{{ url_for('Dashboard') }}" class="backButton">←</a>
+        <h1 class="add-supplier-title">Add New Supplier</h1>
+
+        <form id="supplierForm" action="{{ url_for('SaveSupplier') }}" method="post">
+            <!-- Basic Company Information Section -->
+            <div class="form-group">
+                <label for="companyName">Company Name <span class="required">*</span></label>
+                <input type="text" id="companyName" name="companyName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="companyAddress">Company Address <span class="required">*</span></label>
+                <input type="text" id="companyAddress" name="companyAddress" required>
+            </div>
+
+            <div class="form-group">
+                <label for="contactName">Primary Contact Name <span class="required">*</span></label>
+                <input type="text" id="contactName" name="contactName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="contactEmail">Primary Contact Email <span class="required">*</span></label>
+                <input type="email" id="contactEmail" name="contactEmail" required>
+            </div>
+
+            <div class="form-group">
+                <label for="contactPhone">Primary Contact Phone <span class="required">*</span></label>
+                <input type="tel" id="contactPhone" name="contactPhone" required>
+            </div>
+
+            <div class="form-group">
+                <label for="cybersecurityPolicy">Does your company have an established cybersecurity policy? <span class="required">*</span></label>
+                <div>
+                    <input type="radio" id="cybersecurityYes" name="cybersecurityPolicy" value="Yes" required>
+                    <label for="cybersecurityYes">Yes</label>
+                    <input type="radio" id="cybersecurityNo" name="cybersecurityPolicy" value="No" required>
+                    <label for="cybersecurityNo">No</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="isoCertified">Is the company ISO 27001 certified? <span class="required">*</span></label>
+                <div>
+                    <input type="radio" id="isoYes" name="isoCertified" value="Yes" required>
+                    <label for="isoYes">Yes</label>
+                    <input type="radio" id="isoNo" name="isoCertified" value="No" required>
+                    <label for="isoNo">No</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="securityTraining">How often does your company conduct employee security awareness training? <span class="required">*</span></label>
+                <select id="securityTraining" name="securityTraining" required>
+                    <option value="Quarterly">Quarterly</option>
+                    <option value="Biannually">Biannually</option>
+                    <option value="Annually">Annually</option>
+                    <option value="Not Conducted">Not Conducted</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="incidentResponse">Does your company have an incident response plan for data breaches? <span class="required">*</span></label>
+                <div>
+                    <input type="radio" id="incidentYes" name="incidentResponse" value="Yes" required>
+                    <label for="incidentYes">Yes</label>
+                    <input type="radio" id="incidentNo" name="incidentResponse" value="No" required>
+                    <label for="incidentNo">No</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="dataAccessLevel">What level of access to sensitive data will your company require? <span class="required">*</span></label>
+                <select id="dataAccessLevel" name="dataAccessLevel" required>
+                    <option value="No access">No access</option>
+                    <option value="Limited access">Limited access</option>
+                    <option value="Full access">Full access</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="complianceAudits">Does the company perform regular audits for compliance with regulations (e.g., GDPR, HIPAA)? <span class="required">*</span></label>
+                <div>
+                    <input type="radio" id="complianceYes" name="complianceAudits" value="Yes" required>
+                    <label for="complianceYes">Yes</label>
+                    <input type="radio" id="complianceNo" name="complianceAudits" value="No" required>
+                    <label for="complianceNo">No</label>
+                </div>
+            </div>
+
+            <!-- Error message if fields are missing -->
+            <div id="error-message" class="error-message" style="display: none;">
+                Please fill out all required fields.
+            </div>
+
+            <!-- Button group with confirmation dialog -->
+            <div class="button-group">
+                <button type="button" class="addRiskButton">Add Risk Documents</button>
+                <button type="button" class="addWithoutRiskButton" onclick="validateAndConfirm()">Add Supplier Without Risk Documents</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Confirmation Popup -->
+    <div id="confirmationOverlay"></div>
+    <div id="confirmationPopup">
+        <p>Are you sure you want to add this supplier without adding risk documents?</p>
+        <div class="popup-buttons">
+            <button onclick="confirmAddSupplier()" class="addRiskButton">Yes</button>
+            <button onclick="closePopup()" class="addWithoutRiskButton">No</button>
+        </div>
+    </div>
+
+    <!-- Information Tooltip -->
+    <div id="InfoBox" class="infoBox" style="display: none;">
+        <p>Information about adding new suppliers.</p>
+        <ul>
+            <li><strong>Company Information</strong>: Basic details of the supplier.</li>
+            <li><strong>Risk Assessment</strong>: Answers to evaluate the supplier’s security and compliance posture.</li>
+        </ul>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/AddSupplier.js') }}"></script>
+</body>
+</html>

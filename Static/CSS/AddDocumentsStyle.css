@@ -1,0 +1,210 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header styling */
+header {
+    font-size: 24px;
+    font-weight: bold;
+    background: #ffffff;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+    border-bottom: 1px solid #ddd;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    height: 60px;
+}
+
+/* Logo and Information Icon */
+.logoContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    position: relative;
+}
+
+.logo {
+    max-width: 200px;
+    height: auto;
+}
+
+.infoIcon {
+    font-size: 20px;
+    color: #007bff;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 45%;
+    transform: translateY(-50%);
+    background-color: #ffffff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Main content styling */
+.form-container {
+    width: 50%;
+    background: #f4f4f4;
+    margin: 100px auto;
+    padding: 20px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: left;
+}
+
+/* Back button styling */
+.backButton {
+    font-size: 24px;
+    color: #007bff;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+/* Title styling */
+.add-supplier-title {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Upload Section */
+.upload-section {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.upload-label {
+    cursor: pointer;
+    display: inline-block;
+}
+
+.upload-icon {
+    width: 50px;
+    height: 50px;
+    opacity: 0.6;
+}
+
+/* Document Table */
+.document-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.document-table th, .document-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Finalize Upload Button */
+.finalizeButton {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.finalizeButton:hover {
+    background-color: #0056b3;
+}
+
+/* Information Tooltip */
+.infoBox {
+    display: none;
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    width: 300px;
+    padding: 15px;
+    background: #f4f4f4;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    color: #333;
+    z-index: 10;
+}
+
+.infoBox p {
+    margin-top: 0;
+}
+
+.infoBox ul {
+    padding-left: 20px;
+    list-style-type: disc;
+}
+
+/* Popup Overlay */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+/* Popup Content */
+.popup-content {
+    background: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    width: 300px;
+}
+
+.popup-content p {
+    margin: 20px 0;
+    font-size: 16px;
+    color: #333;
+}
+
+/* Popup Actions */
+.popup-actions {
+    display: flex;
+    justify-content: center;
+}
+
+.popup-actions .finalizeButton {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.popup-actions .finalizeButton:hover {
+    background-color: #0056b3;
+}
+
+/* Warning Message */
+.warning-message {
+    text-align: center;
+    margin-top: 10px;
+}

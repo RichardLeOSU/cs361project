@@ -1,0 +1,272 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header styling */
+header {
+    font-size: 24px;
+    font-weight: bold;
+    background: #ffffff; /* Ensures white background */
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+    border-bottom: 1px solid #ddd;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    height: 60px;
+}
+
+/* Centering and styling the logo and info icon */
+.logoContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    position: relative;
+}
+
+.logo {
+    max-width: 200px;
+    height: auto;
+}
+
+.infoIcon {
+    font-size: 20px;
+    color: #007bff;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 45%;
+    transform: translateY(-50%);
+    background-color: #ffffff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Information Box (Tooltip) */
+.infoBox {
+    display: none;
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    padding: 15px;
+    background: #f4f4f4;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    color: #333;
+    z-index: 10;
+}
+
+.infoBox p {
+    margin-top: 0;
+}
+
+.infoBox ul {
+    padding-left: 20px;
+    list-style-type: disc;
+}
+
+/* Main content styling */
+.form-container {
+    width: 50%;
+    background: #f4f4f4;
+    margin: 100px auto; /* Offset margin to account for fixed header */
+    padding: 20px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: left;
+}
+
+/* Back button styling */
+.backButton {
+    font-size: 24px;
+    color: #007bff;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.add-supplier-title {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Form styling */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px; /* Increased spacing between each question */
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* Add red asterisk only to the main label (excluding radio options) */
+.form-group > label::after {
+    content: " *"; /* Adds red asterisk */
+    color: red;
+}
+
+/* Remove asterisk styling for radio button options */
+.form-group .radio-label {
+    font-weight: normal;
+    color: inherit;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group select {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+}
+
+/* Radio button styling */
+.form-group input[type="radio"] {
+    margin-left: 10px;
+    margin-right: 5px;
+}
+
+/* Button styling */
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.addRiskButton,
+.addWithoutRiskButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.addRiskButton {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.addRiskButton:hover {
+    background-color: #0056b3;
+}
+
+.addWithoutRiskButton {
+    background-color: #6c757d;
+    color: #fff;
+}
+
+.addWithoutRiskButton:hover {
+    background-color: #5a6268;
+}
+
+/* Error Message */
+.error-message {
+    color: red;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Popup styling */
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.popup-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    max-width: 400px;
+    width: 80%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.popup-content button {
+    margin: 10px;
+    padding: 8px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}
+
+.popup-content button:first-of-type {
+    background-color: #007bff;
+    color: white;
+}
+
+.popup-content button:last-of-type {
+    background-color: #6c757d;
+    color: white;
+}
+
+/* Confirmation Popup Styling */
+#confirmationPopup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1001;
+    text-align: center;
+}
+
+#confirmationPopup p {
+    margin: 0 0 20px;
+    font-size: 16px;
+}
+
+#confirmationPopup .popup-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+#confirmationOverlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
